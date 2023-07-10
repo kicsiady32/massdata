@@ -23,7 +23,7 @@
               </div>
             </div>
           </div>
-          <p class="h6 text-muted">Search by Order Date..</p>
+          <p class="h6 text-muted">Search by Channel..</p>
         </form> 
         <table id="example1" class="table table-bordered table-striped">
           <thead>

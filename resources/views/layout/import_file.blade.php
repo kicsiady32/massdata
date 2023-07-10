@@ -37,15 +37,6 @@
             <form action="{{route('csvimport')}}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
-                <label for="csv_file">DS Name</label>
-                <input type="text" class="form-control" id="dataname" name="dataname">
-                @error('dataname')
-              <div class="text-danger">
-                  {{$message}}
-              </div>
-              @enderror
-              </div>
-              <div class="form-group">
                 <label for="csv_file">DS Sheet</label>
                 <input type="file" class="form-control-file" id="csv_file" name="file">
                 <p id="outputOne"></p>

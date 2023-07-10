@@ -12,7 +12,7 @@ class InsertData extends Model
     ];
     public function scopeFilter($query, array $filters){
         if($filters['search'] ?? false) {
-            $query->where('Order_Date','like','%' . request('search') . '%');
+            $query->where('Channel','like','%' . request('search') . '%');
         }
     }
     public static function insertData($data){

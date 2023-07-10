@@ -52,7 +52,7 @@
             @endif
           </tbody>
         </table>     
-        {{$inputData->render()}}
+        {{$inputData->links()}}
       </div><!-- /.box-body -->
     </div><!-- /.box -->
   </div><!-- /.content-wrapper -->

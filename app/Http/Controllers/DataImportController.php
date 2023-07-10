@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\InsertData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
@@ -20,19 +21,16 @@ class DataImportController extends Controller
     public function store(Request $request){  
       
         $this->validate($request,[
-        "dataname"=>'required|unique:insert_data',
+        //"dataname"=>'required|unique:insert_data',
         "file"=>'required|file|mimes:csv,txt|max:204800',
        ]);
 
         $file = $request->file('file');
-        $filename = $file->getClientOriginalName();
+        $filename =  time().'_'.$file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
         $tempPath = $file->getRealPath();
         $fileSize = $file->getSize();
         $mimeType = $file->getMimeType();
-        $dataname = $request->dataname;
-        //dd($mimeType);
-
         $valid_extension = array("csv","xlsx");
 
         $maxFileSize = 2097152; 
@@ -49,7 +47,7 @@ class DataImportController extends Controller
     
               // Import CSV to Database
               $filepath = public_path($location."/".$filename);
-    
+              
               // Reading file
               $file = fopen($filepath,"r");
               $importData_arr=[];
@@ -66,7 +64,7 @@ class DataImportController extends Controller
           foreach($importData_arr as $key=> $importData){
             if($key>0){
             $insertData = array(
-              "dataname"=>$dataname,
+              "dataname"=>$filename,
                "Order_Date"=>$importData[0],
                "Channel"=>$importData[1],
                "SKU"=>$importData[2],

@@ -27,8 +27,6 @@ Route::get('/dashboard/manage/{dataname}', [DashboardController::class,'manage']
 Route::get('/dashboard/manage-search', [DashboardController::class,'search'] )->name('manage.search')->middleware('auth');
 Route::delete('/dashboard/manage-delete/{id}',[DashboardController::class,'destroy'])->name('manage-delete')->middleware('auth');
 
-//Route::delete('/dashboard/{id}',[DashboardController::class,'destroy'])->middleware('auth');
-
 
 Route::get('/users',[UsersController::class,'index'])->name('users')->middleware('auth');
 Route::get('/users/addnewuser',[UsersController::class,'addnewuser'])->name('addNewUser')->middleware('auth');
